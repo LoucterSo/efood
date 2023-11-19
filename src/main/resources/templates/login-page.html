@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Взаимное расположение объектов</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+</head>
+<body>
+    <script src="/js/userAuthentication.js"></script>
+    <div class="container">
+        <div class="form-login">
+            <input type="text"
+            id="login"
+            placeholder="Логин или email" 
+            minlength="3" 
+            maxlength="32"
+            autocomplete="country-role" required>
+        </div>
+
+        <div class="form-password">
+            <input type="password" 
+            id="password"
+            placeholder="Пароль" 
+            minlength="8"
+            maxlength="64"
+            autocomplete="current-password" required>
+        </div>
+
+        <div class="form-button">
+            <input type="button"
+            id="login-button" 
+            onclick="ButtonPress()"
+            value="ВХОД" />
+        </div>
+
+        <div class="form-registration">
+            <a href="/signup"
+            >Регистрация</a>
+        </div>
+    </div>
+</body>
+</html>

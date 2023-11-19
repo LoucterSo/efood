@@ -1,0 +1,26 @@
+        html, body {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .container {
+            display: block;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container input{
+            box-sizing: border-box;
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;  
+        }
+        .form-registration {
+            margin-top: 10px;
+            text-align: center;
+        }
+         /*   */ 
+
