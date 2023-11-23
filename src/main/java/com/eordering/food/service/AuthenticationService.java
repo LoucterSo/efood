@@ -18,7 +18,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -49,13 +52,19 @@ public class AuthenticationService {
         return ResponseEntity.status(HttpStatus.OK).body(AuthResponseData.builder().token(jwt).message("You're authorized").build());
     }
 
-    public ResponseEntity<AuthResponseData> register(SignupData signupData) throws AuthenticationException {
+    public ResponseEntity<AuthResponseData> register(SignupData signupData, BindingResult result) throws AuthenticationException {
         final String login = signupData.getLogin();
 
         if (userRepository.existsByLogin(login))
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .body(AuthResponseData.builder().message(String.format("User with login %s already exists", login)).build());
+
+        if (result.hasErrors())
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(AuthResponseData.builder().message(result.getFieldErrors().toString()).build());
+
 
         final String password = passwordEncoder.encode(signupData.getPassword());
 

@@ -4,6 +4,7 @@ import com.eordering.food.entity.Authority;
 import com.eordering.food.entity.User;
 import com.eordering.food.repository.AuthorityRepository;
 import com.eordering.food.repository.UserRepository;
+import com.eordering.food.service.JwtTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -19,6 +20,7 @@ class InitializerForAdmin implements CommandLineRunner {
     final UserRepository userRepository;
     final AuthorityRepository authorityRepository;
     final PasswordEncoder passwordEncoder;
+
     @Value("${admin.login}")
     @Nullable
     private String login;

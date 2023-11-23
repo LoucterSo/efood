@@ -33,7 +33,6 @@ public class Authority implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        System.out.println(role.name());
         return role.name();
     }
 

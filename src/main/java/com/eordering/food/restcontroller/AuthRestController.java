@@ -3,6 +3,7 @@ package com.eordering.food.restcontroller;
 import com.eordering.food.form.AuthResponseData;
 import com.eordering.food.form.LoginData;
 import com.eordering.food.service.AuthenticationService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class AuthRestController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginData loginData) {
+    public ResponseEntity<?> login(@Valid @RequestBody LoginData loginData) {
         ResponseEntity<AuthResponseData> responseEntity;
         try {
             responseEntity = authenticationService.authenticate(loginData);
